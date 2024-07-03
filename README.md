@@ -7,7 +7,7 @@
  + [Setup](#setup)
 
  ## Development
-The backend of the system is developed on **[Laravel 8.75 PHP Vuejs MVC Framework](http://laravel.com/)** and requires PHP 8.0
+The backend of the system is developed on **[Laravel 8.75 PHP Vuejs 3 MVC Framework](http://laravel.com/)** and requires PHP 8.0
 
 ## Project Structure
 
@@ -62,9 +62,41 @@ If you want to use my project first you can either download the zip file or you 
 
 
 Setup your environment
-
+1. Navigate to the project directory and set up the environment file:
 ```bash
 cd sampleCRUD
 cp .env.example .env
-composer install
+composer install 
+npm install or yarn install
+```
+
+2.Generate a new application key and make necessary changes in the .env file:
+
+```bash
+php artisan key:generate
+```
+3. Create a database:
+```
+create database sample;
+```
+
+4. Run migrations and seeders to set up the database:
+
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+Or run the following command to refresh the database and seed it in one step:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+5. Start the server and the asset watcher in two separate terminal windows:
+
+```
+php artisan serve
+and
+yarn run watch # or npm run watch
 ```

@@ -22,7 +22,6 @@
     "dependencies": {
         "@mdi/font": "^5.9.55",
         "date-fns": "^2.30.0",
-        "element-ui": "^2.15.14",
         "vue": "^3.2.0",
         "vue-router": "^4.0.13",
         "vuetify": "^3.0.0",
