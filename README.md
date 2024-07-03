@@ -7,7 +7,7 @@
  + [Setup](#setup)
 
  ## Development
-The backend of the system is developed on **[Laravel 8.75 PHP Vuejs 3 MVC Framework](http://laravel.com/)** and requires PHP 8.0
+The backend and frontend of the system is developed on **[Laravel 8.75 PHP Vuejs 3 MVC Framework](http://laravel.com/)** and requires PHP 8.0
 
 ## Project Structure
 
