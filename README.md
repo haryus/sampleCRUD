@@ -55,3 +55,16 @@ The backend of the system is developed on **[Laravel 8.75 PHP Vuejs MVC Framewor
 - **InterestController:** Handles interest validations.
 - **RoleController:** Handles role validations.
 - **UserController:** Handles user validations.
+
+## Setup
+
+If you want to use my project first you can either download the zip file or you can clone it using the command to your designated location
+
+
+Setup your environment
+
+```bash
+cd sampleCRUD
+cp .env.example .env
+composer install
+```
