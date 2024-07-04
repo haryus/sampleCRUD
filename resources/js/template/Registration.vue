@@ -109,7 +109,21 @@
                         <span v-if="errors.birthday" class="error-message">{{ errors.birthday }}</span>
                     </template>
                     </v-text-field>
-                    </v-col>
+                  </v-col>
+                  <v-col sm="12">
+                    <v-select background-color="green lighten-5"
+                    dense
+                    outlined
+                    hide-details
+                      :error-messages="errors.role_id ? [errors.role_id] : []"
+                    label="Role *"
+                    required
+                    v-model="dialogObj.role_id" :items="roles" item-value="id" item-title="name">
+                    <template v-slot:prepend-inner>
+                      <span v-if="errors.role_id" class="error-message">{{ errors.role_id }}</span>
+                    </template>
+                    </v-select>
+                  </v-col>
                 
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -129,6 +143,7 @@ export default {
   name: 'App',
   data: () => {
     return {
+      roles: [],
       dialogObj: {
         title: "",
         id: "",
@@ -138,7 +153,7 @@ export default {
         last_name: "",
         contact_no: "",
         birthday: "",
-        role_id: "2",
+        role_id: "",
       },
       errors: {
         email: "",
@@ -152,6 +167,7 @@ export default {
     };
   },
   created(){
+    this.getRoleData()
   },
   methods: {
     close(){
@@ -190,6 +206,7 @@ export default {
             if (errors && errors.last_name) this.errors.last_name = errors.last_name[0];
             if (errors && errors.contact_no) this.errors.contact_no = errors.contact_no[0];
             if (errors && errors.birthday) this.errors.birthday = errors.birthday[0];
+            if (errors && errors.role_id) this.errors.role_id = errors.role_id[0];
         } else {
           console.error('Error adding user:', error);
         }
@@ -206,6 +223,7 @@ export default {
         if (errors && errors.last_name) this.errors.last_name = errors.last_name[0];
         if (errors && errors.contact_no) this.errors.contact_no = errors.contact_no[0];
         if (errors && errors.birthday) this.errors.birthday = errors.birthday[0];
+        if (errors && errors.role_id) this.errors.role_id = errors.role_id[0];
       } else {
         console.error('Error saving user:', error);
       }
@@ -217,6 +235,16 @@ export default {
       this.errors.last_name = "";
       this.errors.contact_no = "";
       this.errors.birthday = "";
+      this.errors.role_id = "";
+    },
+    
+    getRoleData(){
+      axios.get(`api/get_roles`).then ((res) => {
+        let data = [];
+        this.roles = res.data;
+      }).catch((error) => {
+        console.error('Error fetching roles:', error);
+      });
     },
   },
 };
